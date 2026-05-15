@@ -1,0 +1,44 @@
+pragma language_version >= 0.20;
+
+import CompactStandardLibrary;
+
+// Alert record stored on-chain — hashes only, never raw alert data
+export struct AlertRecord {
+  operatorId: Bytes<32>,
+  timestamp:  Uint<64>,
+  matched:    Boolean
+}
+
+// Public ledger: alert hash → AlertRecord
+// Two operators posting the same hash triggers a match
+export ledger alertRegistry: Map<Bytes<32>, AlertRecord>;
+
+// Witnesses run off-chain. The TypeScript agent provides private alert data
+// (protocol, anomaly class, time bucket) when it implements these witnesses.
+// Raw alert data never touches the chain.
+witness computeAlertHash(): Bytes<32>;
+witness localOperatorKey(): Bytes<32>;
+
+export circuit submitAlert(): [] {
+  // disclose() is required: these witness values flow into public ledger state.
+  // The hash and operatorId are intentionally public — the preimage (raw alert) is not.
+  const alertHash = disclose(computeAlertHash());
+  const operatorId = disclose(persistentHash<Bytes<32>>(localOperatorKey()));
+
+  if (alertRegistry.member(alertHash)) {
+    // Second operator posting the same hash → MATCH
+    const existing = alertRegistry.lookup(alertHash);
+    alertRegistry.insert(alertHash, AlertRecord {
+      operatorId: existing.operatorId,
+      timestamp:  existing.timestamp,
+      matched:    true
+    });
+  } else {
+    // First operator — record and wait
+    alertRegistry.insert(alertHash, AlertRecord {
+      operatorId,
+      timestamp:  0,
+      matched:    false
+    });
+  }
+}

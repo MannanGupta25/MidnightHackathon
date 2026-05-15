@@ -1,0 +1,8 @@
+{
+  "name": "@zerowatch/contract",
+  "type": "module",
+  "scripts": {
+    "compact": "compact compile src/zerowatch.compact ./src/managed/zerowatch",
+    "build": "npm run compact"
+  }
+}

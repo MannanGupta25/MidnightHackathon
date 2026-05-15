@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sourceRoot": "../../../../",
+  "sources": ["src/zerowatch.compact", "compiler/standard-library.compact"],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAAA;;;;;;;;;;;;;;;;MAqBA,AAAA,WAsBC;;;;;;;;;;;;;;;;;;;;;;OAAA;;;;GACA;EA5CD;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAaA;;;;;;;;;;yEAAyD;;;;;;;GA+BxD;EC5CD,AAAA,kBAAA;oEAAA;;;EDkBA,AAAA,mBAAsC;;0DAAtC,gBAAsC;;;;;;;;;;;;;;GAAA;EACtC,AAAA,mBAAsC;;0DAAtC,gBAAsC;;;;;;;;;;;;;;GAAA;EAEtC,AAAA,cAsBC;UAnBO,WAAwC;UACxC,YAAoE;;gCAEtE;;;;;;;;;;;uJAAqB,WAAS;;;;qGAAjB;;YAET,UAA0C,2BAA/B;;;;;;;;;;;;;;4IAAqB,WAAS;;;sHAAjB;YAC9B,KAAa,iBACC,UAAQ;iCACR,UAAQ;;MAFtB;;;;;;;;;;6HAAqB,WAAS;;;6HAA9B,KAAa;;;0EAAA;;YAOb,KAAa,iBACX,YAAU;MADZ;;;;;;;;;;6HAAqB,WAAS;;;6HAA9B,KAAa;;;0EAAA;;;GAMhB;;;;;;;;;;;;;;;;IA9BD;;;;;uCAAA;;;;;;;;;;;;;;;;4GAAyD;;;;;;uCAAzD;;;;;;;;;;;;4GAAyD;;;;;;;;;;;;;;uCAAzD;;;;;;;;;;;;;;;4GAAyD;;;;;;;;;;;;;;uCAAzD;;;;;;;;;;;;;;;;;4GAAyD;;;;;;;;;KAAA;;;;;;;;;;;;;"
+}
