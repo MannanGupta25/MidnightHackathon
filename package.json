@@ -1,0 +1,29 @@
+{
+  "name": "zerowatch",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": {
+    "packages": [
+      "contract",
+      "agent"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build:contract": "npm run build --workspace=contract",
+    "simulate": "npm run simulate --workspace=agent",
+    "typecheck": "npm run typecheck --workspace=agent"
+  },
+  "dependencies": {
+    "@midnight-ntwrk/compact-runtime": "^0.16.0",
+    "@midnight-ntwrk/midnight-js-network-id": "^4.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  }
+}
