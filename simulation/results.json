@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "run_at": "2026-05-15T19:36:02.655405+00:00",
+    "server": "http://localhost:3001",
+    "timeBucket": 1976524
+  },
+  "scenario_1": {
+    "description": "Coordinated MODBUS scan \u2014 two operators, same signature",
+    "expected": "match",
+    "outcome": "match",
+    "timeBucket": 1976524,
+    "events": [
+      {
+        "operator": "plant-alpha",
+        "protocol": "MODBUS",
+        "anomalyClass": "FUNCTION_CODE_SCAN",
+        "timeBucket": 1976524,
+        "matched": false,
+        "event": {
+          "type": "alert_submitted",
+          "operatorId": "plant-alpha",
+          "protocol": "MODBUS",
+          "anomalyClass": "FUNCTION_CODE_SCAN",
+          "timeBucket": "1976524",
+          "timestamp": 1778873762673
+        },
+        "ts": "19:36:02.673Z"
+      },
+      {
+        "operator": "plant-beta",
+        "protocol": "MODBUS",
+        "anomalyClass": "FUNCTION_CODE_SCAN",
+        "timeBucket": 1976524,
+        "matched": true,
+        "event": {
+          "type": "match",
+          "operatorId": "plant-beta",
+          "protocol": "MODBUS",
+          "anomalyClass": "FUNCTION_CODE_SCAN",
+          "timeBucket": "1976524",
+          "timestamp": 1778873762677
+        },
+        "ts": "19:36:02.677Z"
+      }
+    ],
+    "ledger": [
+      {
+        "hash": "f4025eb055502bca648ac6b60212530ab33bd7367d3c6d2def2fb55250f5b01d",
+        "operatorId": "15cfa052e0fc822f52c21b8bdd55cb9d3cc72a796624566eaae494db6369d0d0",
+        "matched": true
+      }
+    ]
+  },
+  "scenario_2": {
+    "description": "Unrelated incidents \u2014 MODBUS write vs DNP3 read",
+    "expected": "no_match",
+    "outcome": "no_match",
+    "timeBucket": 1976524,
+    "events": [
+      {
+        "operator": "plant-gamma",
+        "protocol": "MODBUS",
+        "anomalyClass": "WRITE_TO_COIL",
+        "timeBucket": 1976524,
+        "matched": false,
+        "event": {
+          "type": "alert_submitted",
+          "operatorId": "plant-gamma",
+          "protocol": "MODBUS",
+          "anomalyClass": "WRITE_TO_COIL",
+          "timeBucket": "1976524",
+          "timestamp": 1778873762909
+        },
+        "ts": "19:36:02.909Z"
+      },
+      {
+        "operator": "plant-delta",
+        "protocol": "DNP3",
+        "anomalyClass": "READ_ALL",
+        "timeBucket": 1976524,
+        "matched": false,
+        "event": {
+          "type": "alert_submitted",
+          "operatorId": "plant-delta",
+          "protocol": "DNP3",
+          "anomalyClass": "READ_ALL",
+          "timeBucket": "1976524",
+          "timestamp": 1778873762920
+        },
+        "ts": "19:36:02.920Z"
+      }
+    ],
+    "ledger": [
+      {
+        "hash": "2f37dfaab411df8a5d06fb746d625985d8a87afe15e8dc5b4fc05454c7a37414",
+        "operatorId": "6474a565aa069e2f1e81266c5e94d42b7400f2fad5668cec47f7af252512181b",
+        "matched": false
+      },
+      {
+        "hash": "3948a162cb3ac88f90b1b12403bfafe55094318a6fae7df05350390ff652ec8f",
+        "operatorId": "630ce8d2d85d18631ca5aee1c9b8b63f8c0646d7b263120712109b2db7fd6abb",
+        "matched": false
+      }
+    ]
+  }
+}
